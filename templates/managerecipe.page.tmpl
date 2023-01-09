@@ -1,0 +1,39 @@
+{{template "base" .}}
+
+{{define "content"}}
+{{$res := index .Data "recipes"}}
+<div class="container p-5">
+
+    <h1 class="text-center my-3 pt-5">Manage Recipes</h1>
+    <a href="/create-recipe"class="btn btn-main btn-lg my-4">Create Recipe</a>
+    <div class="d-flex align-items-center justify-content-center">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">name</th>
+                <th scope="col">type</th>
+                <th scope="col">price</th>
+                <th scope="col">action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{range $val := $res}}
+                <tr>
+                <th scope="row">{{$val.ID}}</th>
+                <td>{{$val.Name}}</td>
+                <td>{{$val.Type}}</td>
+                <td>{{$val.Price}}</td>
+                <td>
+                {{$editlink := printf "%v%v" "/edit-recipe/" $val.ID}}
+                {{$deletelink := printf "%v%v" "/delete-recipe/" $val.ID}}
+                    <a href={{$editlink}} class="btn btn-warning">edit</a>
+                    <a href={{$deletelink}} class="btn btn-danger">delete</a>
+                </td>
+                </tr>
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{end}}

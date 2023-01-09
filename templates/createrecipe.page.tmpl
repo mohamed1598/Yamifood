@@ -1,0 +1,141 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+     
+
+        .form-signin .form-floating:focus-within {
+        z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        }
+        form{
+            border: 3px solid rgb(207, 166, 113);
+            border-radius:15px
+        }
+        .textarea-control {
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .375rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            padding: 4rem .75rem;
+            line-height: 1.25;
+        }
+    </style>
+    <div class="row align-items-center justify-content-center pt-5">
+        <div class="col-md-8 col-lg-6 col-11">
+            <main class="form-signin w-100 m-auto pt-5">
+                <form method="post" action="/create-recipe" class="p-5">
+                    <h1 class="h3 mb-3 fw-normal text-center">Creating Recipe</h1>
+                    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                    <label class="text-danger">{{index .Data "error"}}</label>
+
+                    <label class="text-danger">{{.Form.Errors.GetError "name"}}</label>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="recipe name">
+                        <label for="floatingInput">Recipe Name</label>
+                    </div>
+
+                    <label class="text-danger">{{.Form.Errors.GetError "description"}}</label>
+                    <div class="form-floating my-2">
+                        <textarea class="textarea-control" id="description" name="description" placeholder="recipe description" rows="15"></textarea>
+                       <!-- <input type="text" class="form-control" id="name" name="name" placeholder="recipe name">-->
+                        <label for="floatingInput">Recipe Description</label>
+                    </div>
+                    
+                    <label class="text-danger">{{.Form.Errors.GetError "imgUrl"}}</label>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="imgUrl" name="imgUrl" placeholder="image URL">
+                        <label for="floatingInput">image URL</label>
+                    </div>
+                    
+                    <label class="text-danger">{{.Form.Errors.GetError "price"}}</label>
+                    <div class="form-floating my-2">
+                        <input type="number" class="form-control" id="price" name="price" placeholder="Price">
+                        <label for="floatingInput">Price</label>
+                    </div>
+                    
+                    <label class="text-danger">{{.Form.Errors.GetError "type"}}</label>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="type" name="type" placeholder="Type">
+                        <label for="floatingInput">Type</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-main" type="submit">Create Recipe</button>
+                </form>
+            </main>
+        </div>
+    </div>
+    
+{{end}}

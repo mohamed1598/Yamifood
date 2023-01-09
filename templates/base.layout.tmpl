@@ -1,0 +1,125 @@
+{{define "base"}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamifood Restaurant</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- custom css -->
+    
+    {{block "css" .}}
+    <style>
+        body{
+        font-family: 'Athiti', sans-serif;
+        width: 100vw;
+        overflow-x:hidden;
+        }
+        .home-enterence{
+            height: 100vh;
+            background-image:linear-gradient(rgba(10, 9, 9, 0.5),rgba(26, 23, 23, 0.5)), url('https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            color: whitesmoke;
+            font-size: 1.5rem;
+        }
+        .home-enterence p{
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        .btn-border-main{
+            background-color: inherit;
+            color: whitesmoke;
+            border: 3px solid rgb(207, 166, 113);
+        }
+        .btn-main,.btn-main:hover,.btn-main:active{
+            background-color: rgb(207, 166, 113);
+            color: whitesmoke;
+        }
+        .btn-border-main,.btn-border-main:hover,.btn-border-main:active{
+            background-color: inherit;
+            color: whitesmoke;
+            border: 3px solid rgb(207, 166, 113);
+        }
+        .main-text{
+            color: rgb(207, 166, 113);
+        }
+        .navbar-brand img{
+            width:50px;
+        }
+    {{end}}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light navbar-light fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand"><img src="https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg" alt=""></a>
+            <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navmenu" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/menu/all" class="nav-link">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about" class="nav-link">About</a>
+                    </li>
+                    {{if eq .IsAdmin 1}}
+                    <li class="nav-item">
+                        <a href="/manage-recipe" class="nav-link">Manage Recipes</a>
+                    </li>
+                    {{end}}
+                    {{if eq .IsAuthenticated 1}}
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Logout</a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/signup" class="nav-link">Signup</a>
+                    </li>
+                    {{end}}
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{block "content" .}}
+
+    {{end}}
+    
+    <footer class="text-center main-text p-4 bg-dark">
+        All Rights Reserved. © 2022 Yamifood Restaurant
+    </footer>
+
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+    {{block "js" .}}
+
+    {{end}}
+</body>
+
+
+</html>
+
+{{end}}

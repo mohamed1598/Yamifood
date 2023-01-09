@@ -1,0 +1,16 @@
+.home-enterence{
+    height: 100vh;
+    background-image:linear-gradient(rgba(10, 9, 9, 0.5),rgba(26, 23, 23, 0.5)), url('../slider-01.jpg');
+    background-size: cover;
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+.home-enterence p{
+    font-size: 1rem;
+    line-height: 1.4;
+}
+.btn-border-main{
+    background-color: inherit;
+    color: whitesmoke;
+    border: 3px solid rgb(207, 166, 113);
+}

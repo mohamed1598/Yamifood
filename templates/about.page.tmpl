@@ -1,0 +1,30 @@
+{{template "base" .}}
+
+    <style>
+
+        header{
+            background-image: linear-gradient(rgba(20,30,20,0.8),rgba(20,30,20,0.8)),url('https://cdn.stocksnap.io/img-thumbs/280h/strawberry-food_PROXEBKRSP.jpg');
+            height: 60vh;
+            margin-top:15vh;
+            background-size: 100%;
+            background-position: 50% 50%;
+        }
+    </style>
+{{define "content"}}
+    <header class="text-center text-light d-flex align-items-center justify-content-center">
+        <h1>About Us</h1>
+    </header>
+    <section class="welcome p-4 my-5 row align-items-start justify-content-between">
+        <img src="https://www.brbene.com/public/theme/images/about-img.jpg" class="col-md-6" alt="">
+        <div class="story text-center col-md-6">
+            <h2>Welcome To <span class="main-text">Yamifood Restaurant</span></h2>
+            <p>Little Story</p>
+            <p class="lead">The taste of quality and luxury with Yamifood Enjoy a unique experience when you visit our restaurant and enjoy the unique taste of all our dishes. The finest ingredients the best chefs Best catering service The highest level Hygiene</p>
+            <p class="lead">
+                Located within the Rally Hotel, across 20th Street from Coors Field, we offer a dining experience for both the young and young at heart, complete with upcoming original affairs like themed brunches; an engaging dinner series with special guests; one-of-a-kind dessert collaborations; and more. 
+            </p>
+            <a class="btn btn-lg btn-main px-5 py-2" href="/menu/all">Menu</a>
+
+        </div>
+    </section>
+{{end}}
